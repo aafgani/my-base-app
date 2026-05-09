@@ -1,0 +1,79 @@
+# ------------------------------
+# General
+# ------------------------------
+.DS_Store
+Thumbs.db
+*.log
+tmp/
+temp/
+
+# ------------------------------
+# VS Code / Visual Studio
+# ------------------------------
+.vscode/
+.vs/
+.idea/
+
+# Keep shared VS Code configs if desired
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# ------------------------------
+# .NET
+# ------------------------------
+**/bin/
+**/obj/
+
+*.user
+*.suo
+*.cache
+
+# Rider
+_ReSharper*/
+*.DotSettings.user
+
+# ------------------------------
+# NuGet
+# ------------------------------
+packages/
+*.nupkg
+
+# ------------------------------
+# SQL Database Projects
+# ------------------------------
+*.dacpac
+*.deployreport.xml
+*.publish.xml
+*.sqlproj.user
+*.dbmdl
+
+# ------------------------------
+# Terraform
+# ------------------------------
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# ------------------------------
+# Bicep
+# ------------------------------
+*.bicepconfig.local.json
+
+# ------------------------------
+# Node
+# ------------------------------
+**/node_modules/
+
+# ------------------------------
+# Secrets / Environment
+# ------------------------------
+.env
+.env.*
+appsettings.Development.json
+secrets.json
