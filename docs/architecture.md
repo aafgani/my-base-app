@@ -1,6 +1,6 @@
 [Back to ReadMe](../README.md)
 
-# 📦 Overview
+# 📦 Architecture
 
 SuperApp initially starts as a Money Manager XLS/XLSX importer.
 
