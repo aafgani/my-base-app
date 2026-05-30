@@ -1,4 +1,4 @@
-# Super App
+# Base App
 
 Personal Finance and Productivity platform built using modern .NET and Azure cloud-native architecture
 
@@ -35,6 +35,7 @@ rather than prematurely building a complex distributed system.
 
 - [📦 Overview](docs/architecture.md)
 - [🔧 Getting Started](docs/installation.md)
+- [👩‍💻 Developer Guide](docs/developer-guide.md)
 - [👩‍💻 How to Contribute](docs/how-to-contribute.md)
 - [🛠️ Build and Release Management](docs/build-and-release.md)
 
