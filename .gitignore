@@ -77,3 +77,4 @@ override.tf.json
 .env.*
 appsettings.Development.json
 secrets.json
+src/database/BaseApp.jfm

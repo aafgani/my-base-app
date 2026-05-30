@@ -9,11 +9,9 @@
     <TargetDatabaseSet>True</TargetDatabaseSet>
   </PropertyGroup>
   <ItemGroup>
-    <None Include=".vscode\tasks.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include=".vscode\Tables" />
-    <Folder Include=".vscode\" />
+    <Folder Include="Tables\" />
+    <Folder Include="Stored Procedures\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <Target Name="BeforeBuild">
     <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />

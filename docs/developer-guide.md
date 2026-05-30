@@ -4,19 +4,29 @@
 
 This guide contains common development tasks and conventions used in the project.
 
-## Adding a New Entity
+## Initial Database Setup
 
-1. Create the Domain Entity.
-2. Create the Persistence Record using EF Core scaffolding (or add it manually if required).
-3. Create mapping extensions between the Persistence Record and Domain Entity.
-4. Create the repository interface.
-5. Create the repository implementation.
-6. Register dependencies in DI if required.
-7. Add unit and integration tests.
+Before scaffolding EF Core models, ensure the database schema has been deployed from the SQL Database Project.
 
-## Scaffolding EF Core Models
+1. Build the database project.
+2. Publish the generated DACPAC to the target SQL Server instance.
+3. Verify that the database and schema objects have been created successfully.
 
-dotnet ef dbcontext scaffold "Data Source=127.0.0.1,1433\SuperApp;Initial Catalog=BaseApp;User ID=sa;Password=Password@123;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --project ./src/shared/SuperApp.Infrastructure --context SuperAppDbContext --output-dir Entity --context-dir Contexts --no-onconfiguring
+### Adding a New Entity
+
+1. Create or update the database object in the SQL Database Project.
+2. Deploy the database project to the target database.
+3. Create the Persistence Record using EF Core scaffolding (or add it manually if required).
+4. Create the Domain Entity.
+5. Create mapping extensions between the Persistence Record and Domain Entity.
+6. Create the repository interface.
+7. Create the repository implementation.
+8. Register dependencies in DI if required.
+9. Add unit and integration tests.
+
+### Scaffolding EF Core Models
+
+dotnet ef dbcontext scaffold "Data Source=127.0.0.1,1433\BaseApp;Initial Catalog=BaseApp;User ID=sa;Password=Password@123;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --project ./src/shared/App.Infrastructure --context AppDbContext --output-dir Persistence/Records --context-dir Persistence/Contexts --no-onconfiguring
 
 **Notes**
 
@@ -24,10 +34,12 @@ dotnet ef dbcontext scaffold "Data Source=127.0.0.1,1433\SuperApp;Initial Catalo
 - Do not expose Persistence Records outside the Infrastructure layer.
 - Use mapping extensions to convert between Persistence Records and Domain Entities.
 
-## Running Integration Tests
+## Test
+
+### Running Integration Tests
 
 TBA
 
-## Using TestContainers
+### Using TestContainers
 
 TBA

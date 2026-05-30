@@ -44,31 +44,32 @@ BaseApp/
 │   ├── database/
 │   │
 │   └── shared/
-│       ├── BaseApp.Domain/
+│       ├── App.Domain/
 │       │   ├── Entities/
 │       │   ├── Repositories/
 │       │   ├── ValueObjects/
 │       │   └── Services/
 │       │
-│       ├── BaseApp.Application/
+│       ├── App.Application/
 │       │   ├── UseCases/
 │       │   ├── DTOs/
 │       │   ├── Interfaces/
 │       │   └── Behaviors/
 │       │
-│       └── BaseApp.Infrastructure/
+│       └── App.Infrastructure/
 │           ├── Persistence/
 │           │   ├── Contexts/
 │           │   ├── Records/
 │           │   ├── Mappings/
 │           │   └── Repositories/
-│           │
 │           ├── Services/
 │           └── Security/
 │
 ├── docs/
 │   ├── architecture.md
+│   ├── build-and-release.md
 │   ├── developer-guide.md
+│   ├── how-to-contribute.md
 │   └── decisions/
 ├── infra/
 ├── samples/
