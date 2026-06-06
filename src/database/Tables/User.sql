@@ -5,7 +5,7 @@ CREATE TABLE [dbo].[User]
   [Email] NVARCHAR(255) NOT NULL,
   [FirstName] NVARCHAR(255) NOT NULL,
   [LastName] NVARCHAR(255) NOT NULL,
-  [PasswordHash] NVARCHAR(255) NOT NULL,
+  [Password] NVARCHAR(255) NOT NULL,
   [FailedLoginAttempts] INT NOT NULL DEFAULT 0,
   [LockedUntil] DATETIME NULL,
   [CreatedAt] DATETIME NOT NULL DEFAULT GETDATE(),
