@@ -1,13 +1,14 @@
-using App.Domain.Specifications;
+using App.Domain.Entities;
+using App.Domain.Interface;
 
 namespace App.Domain.Repositories;
 
-public interface IRepository<TEntity> where TEntity : class
+public interface IRepository<T> where T : Entity
 {
-    Task AddAsync(TEntity entity);
-    Task<TEntity?> GetByIdAsync(Guid id);
-    Task UpdateAsync(TEntity entity);
-    Task RemoveAsync(TEntity entity);
-    Task<TEntity?> FirstAsync(ISpecification<TEntity> specification, bool tracking = false);
-    Task<IEnumerable<TEntity>> ListAsync(ISpecification<TEntity> specification, bool tracking = false);
+    Task AddAsync(T entity);
+    Task<T?> GetByIdAsync(Guid id);
+    Task UpdateAsync(T entity);
+    Task RemoveAsync(T entity);
+    Task<T?> FirstAsync(ISpecification<T> specification, bool tracking = false);
+    Task<IEnumerable<T>> ListAsync(ISpecification<T> specification, bool tracking = false);
 }

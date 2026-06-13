@@ -6,7 +6,7 @@ public class UserEligibleForLoginSpecification : BaseSpecification<User>
 {
     public UserEligibleForLoginSpecification(
         string username)
-        : base(u => u.Username == username
+        : base(u => u.Username.Value.Equals(username)
             && u.IsActive
             && !u.IsLocked())
     {

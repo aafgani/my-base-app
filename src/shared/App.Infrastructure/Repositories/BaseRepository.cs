@@ -1,12 +1,12 @@
 using App.Domain.Entities;
+using App.Domain.Interface;
 using App.Domain.Repositories;
-using App.Domain.Specifications;
 using App.Infrastructure.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Infrastructure.Repositories;
 
-public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
+public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : Entity
 {
     protected readonly AppDbContext _context;
 
@@ -65,13 +65,15 @@ public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : Base
         //     .ToListAsync();
     }
 
-    public async Task RemoveAsync(TEntity entity)
+    public Task RemoveAsync(TEntity entity)
     {
         _context.Set<TEntity>().Remove(entity);
+        return Task.CompletedTask;
     }
 
-    public async Task UpdateAsync(TEntity entity)
+    public Task UpdateAsync(TEntity entity)
     {
         _context.Set<TEntity>().Update(entity);
+        return Task.CompletedTask;
     }
 }
