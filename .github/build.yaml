@@ -1,0 +1,34 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches: ["main"]
+
+environment: development
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+        env:
+          DOTNET_INSTALL_DIR: ${{ runner.temp }}/dotnet
+
+      - name: Add dotnet to PATH
+        run: echo "${{ runner.temp }}/dotnet" >> $GITHUB_PATH
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test --configuration Release --no-build
