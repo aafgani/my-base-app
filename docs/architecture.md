@@ -35,13 +35,42 @@ Email Notification
 ## Repository Structure
 
 ```
-SuperApp/
+BaseApp/
 ├── src/
-│ ├── api/
-│ ├── database/
-│ ├── shared/
-│ └── worker/
+│   ├── api/
+│   │
+│   ├── worker/
+│   │
+│   ├── database/
+│   │
+│   └── shared/
+│       ├── App.Domain/
+│       │   ├── Entities/
+│       │   ├── Repositories/
+│       │   ├── ValueObjects/
+│       │   └── Services/
+│       │
+│       ├── App.Application/
+│       │   ├── UseCases/
+│       │   ├── DTOs/
+│       │   ├── Interfaces/
+│       │   └── Behaviors/
+│       │
+│       └── App.Infrastructure/
+│           ├── Persistence/
+│           │   ├── Contexts/
+│           │   ├── Records/
+│           │   ├── Mappings/
+│           │   └── Repositories/
+│           ├── Services/
+│           └── Security/
+│
 ├── docs/
+│   ├── architecture.md
+│   ├── build-and-release.md
+│   ├── developer-guide.md
+│   ├── how-to-contribute.md
+│   └── decisions/
 ├── infra/
 ├── samples/
 └── superapp.code-workspace
@@ -50,16 +79,16 @@ SuperApp/
 
 ## Tech Stack
 
-| Area                  | Technology               |
-| --------------------- | ------------------------ |
-| Backend API           | ASP.NET Core Minimal API |
-| Database              | SQL Server               |
-| ORM                   | Entity Framework Core    |
-| SQL Project           | SDK-style SQL Project    |
-| Excel Reader          | ClosedXML                |
-| Background Processing | Azure Functions          |
-| Queue                 | Azure Queue Storage      |
-| Dashboard             | AdminLTE                 |
-| Infrastructure        | Bicep                    |
-| Containerization      | Docker                   |
-| CI/CD                 | GitHub Actions           |
+| Area                  | Technology                     |
+| --------------------- | ------------------------------ |
+| Backend API           | ASP.NET Core Minimal API       |
+| Database              | SQL Server                     |
+| ORM                   | Entity Framework Core & Dapper |
+| SQL Project           | SDK-style SQL Project          |
+| Excel Reader          | ClosedXML                      |
+| Background Processing | Azure Functions                |
+| Queue                 | Azure Queue Storage            |
+| Dashboard             | AdminLTE                       |
+| Infrastructure        | Bicep                          |
+| Containerization      | Docker                         |
+| CI/CD                 | GitHub Actions                 |

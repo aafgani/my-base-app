@@ -1,0 +1,9 @@
+CREATE TABLE [dbo].[Roles]
+(
+  [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+  [Name] NVARCHAR(100) NOT NULL,
+  [Description] NVARCHAR(255) NULL,
+  [isActive] BIT NOT NULL,
+  [CreatedDate] DATETIME NOT NULL,
+  [UpdatedDate] DATETIME NULL
+)

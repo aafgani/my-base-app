@@ -1,0 +1,92 @@
+using System;
+using App.Domain.Interface;
+using App.Domain.ValueObjects;
+
+namespace App.Domain.Entities;
+
+public class User : AggregateRoot, IAuditable
+{
+    public User()
+    {
+    }
+
+    public Username Username { get; private set; }
+
+    public Email Email { get; private set; }
+
+    public string FirstName { get; private set; }
+
+    public string LastName { get; private set; }
+
+    public string PasswordHash { get; private set; }
+    public bool IsActive { get; private set; }
+
+    public int FailedLoginAttempts { get; private set; }
+    public DateTime LockUntil { get; private set; }
+
+    public DateTime CreatedAt { get; private set; }
+
+    public DateTime UpdatedAt { get; private set; }
+
+    public static User Create(
+    Username username,
+    Email email,
+    string firstName,
+    string lastName,
+    string passwordHash)
+    {
+        return new User
+        {
+            Id = Guid.NewGuid(),
+            Username = username,
+            Email = email,
+            FirstName = firstName,
+            LastName = lastName,
+            PasswordHash = passwordHash,
+            IsActive = false,
+            CreatedAt = DateTime.UtcNow
+        };
+    }
+
+    public void RecordFailedLogin()
+    {
+        FailedLoginAttempts++;
+        if (FailedLoginAttempts >= 3)
+        {
+            LockUntil = DateTime.UtcNow.AddMinutes(15);
+        }
+    }
+
+    public void RecordSuccessfulLogin()
+    {
+        FailedLoginAttempts = 0;
+    }
+
+    public bool IsLocked()
+    {
+        return FailedLoginAttempts >= 3 || LockUntil > DateTime.UtcNow; // lockout threshold is 3 attempts or lockout time is in the future
+    }
+    public bool VerifyPassword(string passwordHash)
+    {
+        return PasswordHash == passwordHash;
+    }
+    public void Lock(TimeSpan duration)
+    {
+        LockUntil = DateTime.UtcNow.Add(duration);
+    }
+
+    public void Activate()
+    {
+        IsActive = true;
+    }
+
+    public void Deactivate()
+    {
+        IsActive = false;
+    }
+
+    public void ChangePassword(string passwordHash)
+    {
+        PasswordHash = passwordHash;
+    }
+}
