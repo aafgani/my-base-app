@@ -19,18 +19,6 @@ The goal is to balance:
 - learning
 - scalability
 
-### Planned Features
-
-- Budget management
-- Scheduled imports
-- Financial insights
-- AI categorization
-- Google Calendar integration
-- Mobile-friendly dashboard
-- Development Notes
-
-rather than prematurely building a complex distributed system.
-
 ## 📚 Table of Contents
 
 - [📦 Overview](docs/architecture.md)
