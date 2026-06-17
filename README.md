@@ -1,6 +1,6 @@
 # Base App
 
-Personal Finance and Productivity platform built using modern .NET and Azure cloud-native architecture
+Personal Finance and Productivity platform built using modern .NET and Azure cloud-native architecture.
 
 ## 📦 Overview
 
