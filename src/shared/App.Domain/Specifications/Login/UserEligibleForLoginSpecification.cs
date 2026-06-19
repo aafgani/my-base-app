@@ -1,8 +1,9 @@
-using App.Domain.Entities;
+using App.Domain.Entities.Users;
+using App.Domain.Entities.Users.ValueObjects;
 
 namespace App.Domain.Specifications.Login;
 
-public class UserEligibleForLoginSpecification : BaseSpecification<User>
+public class UserEligibleForLoginSpecification : BaseSpecification<User, UserId>
 {
     public UserEligibleForLoginSpecification(
         string username)

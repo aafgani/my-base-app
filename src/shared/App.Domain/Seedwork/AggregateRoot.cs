@@ -1,10 +1,9 @@
 using System;
 using App.Domain.Event;
-using App.Domain.Interface;
 
-namespace App.Domain.Entities;
+namespace App.Domain.Seedwork;
 
-public abstract class AggregateRoot : Entity, IAggregateRoot
+public abstract class AggregateRoot<TId> : Entity<TId>, IAggregateRoot
 {
     private readonly List<DomainEvent> _domainEvents = [];
     public IReadOnlyCollection<DomainEvent> DomainEvents => _domainEvents.AsReadOnly();

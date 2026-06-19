@@ -1,6 +1,6 @@
 using System;
 
-namespace App.Domain.Interface;
+namespace App.Domain.Seedwork;
 
 public interface IAuditable
 {

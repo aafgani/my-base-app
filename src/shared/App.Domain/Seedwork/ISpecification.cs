@@ -1,9 +1,8 @@
 using System.Linq.Expressions;
-using App.Domain.Entities;
 
-namespace App.Domain.Interface;
+namespace App.Domain.Seedwork;
 
-public interface ISpecification<T> where T : Entity
+public interface ISpecification<T, TId> where T : Entity<TId>
 {
     Expression<Func<T, bool>> Criteria { get; }
 
