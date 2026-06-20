@@ -1,5 +1,5 @@
 using App.Domain.Entities.Users;
-using App.Domain.Entities.Users.ValueObjects;
+using App.Domain.Ids;
 
 namespace App.Domain.Specifications.Login;
 

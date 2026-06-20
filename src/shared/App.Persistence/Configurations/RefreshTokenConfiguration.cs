@@ -1,6 +1,6 @@
 using App.Domain.Entities.Authentication;
-using App.Domain.Entities.Authentication.ValueObjects;
 using App.Domain.Entities.Users;
+using App.Domain.Ids;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Persistence.Configurations;

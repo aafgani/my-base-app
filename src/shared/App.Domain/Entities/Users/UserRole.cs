@@ -1,5 +1,5 @@
 using System;
-using App.Domain.Entities.Roles.ValueObjects;
+using App.Domain.Ids;
 
 namespace App.Domain.Entities.Users;
 

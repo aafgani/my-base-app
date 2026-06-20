@@ -1,5 +1,5 @@
 using System;
 
-namespace App.Domain.Entities.Users.ValueObjects;
+namespace App.Domain.Ids;
 
 public record UserId(Guid Value);

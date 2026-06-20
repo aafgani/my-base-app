@@ -2,7 +2,7 @@ using System;
 using App.Domain.Exceptions;
 using App.Domain.Seedwork;
 
-namespace App.Domain.Entities.Users.ValueObjects;
+namespace App.Domain.ValueObjects;
 
 public class Email : ValueObject
 {

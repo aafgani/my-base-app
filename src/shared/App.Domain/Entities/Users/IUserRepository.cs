@@ -1,6 +1,7 @@
 using System;
-using App.Domain.Entities.Users.ValueObjects;
+using App.Domain.Ids;
 using App.Domain.Seedwork;
+using App.Domain.ValueObjects;
 
 namespace App.Domain.Entities.Users;
 

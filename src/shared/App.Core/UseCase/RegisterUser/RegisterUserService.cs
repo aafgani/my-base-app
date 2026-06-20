@@ -1,6 +1,6 @@
 using App.Core.Interface;
 using App.Domain.Entities.Users;
-using App.Domain.Entities.Users.ValueObjects;
+using App.Domain.ValueObjects;
 
 namespace App.Core.UseCase.RegisterUser;
 

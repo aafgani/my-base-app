@@ -1,6 +1,5 @@
 using System;
-using App.Domain.Entities.Authentication.ValueObjects;
-using App.Domain.Entities.Users.ValueObjects;
+using App.Domain.Ids;
 using App.Domain.Seedwork;
 
 namespace App.Domain.Entities.Authentication;

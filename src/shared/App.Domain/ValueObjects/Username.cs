@@ -1,7 +1,7 @@
 using System;
 using App.Domain.Seedwork;
 
-namespace App.Domain.Entities.Users.ValueObjects;
+namespace App.Domain.ValueObjects;
 
 public class Username : ValueObject
 {

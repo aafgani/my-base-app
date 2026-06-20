@@ -1,6 +1,6 @@
-using App.Domain.Entities.Roles.ValueObjects;
 using App.Domain.Entities.Users;
-using App.Domain.Entities.Users.ValueObjects;
+using App.Domain.Ids;
+using App.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

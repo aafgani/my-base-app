@@ -1,5 +1,5 @@
 using System;
 
-namespace App.Domain.Entities.Roles.ValueObjects;
+namespace App.Domain.Ids;
 
 public record RoleId(Guid Value);

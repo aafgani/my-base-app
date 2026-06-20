@@ -1,5 +1,6 @@
 using App.Domain.Entities.Users;
-using App.Domain.Entities.Users.ValueObjects;
+using App.Domain.Ids;
+using App.Domain.ValueObjects;
 
 namespace App.Infrastructure.Repositories;
 
