@@ -1,4 +1,5 @@
 using System;
+using App.Domain.Entities.Roles.ValueObjects;
 using App.Domain.Entities.Users.ValueObjects;
 using App.Domain.Seedwork;
 
@@ -18,6 +19,8 @@ public class User : AggregateRoot<UserId>, IAuditable
     public DateTime LockUntil { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
+    private readonly List<UserRole> _roles = [];
+    public IReadOnlyCollection<UserRole> Roles => _roles.AsReadOnly();
 
     public static User Create(
     Username username,
@@ -75,5 +78,15 @@ public class User : AggregateRoot<UserId>, IAuditable
     public void ChangePassword(string passwordHash)
     {
         PasswordHash = passwordHash;
+    }
+
+    public void AssignRole(RoleId roleId)
+    {
+        if (_roles.Any(x => x.RoleId == roleId))
+        {
+            return;
+        }
+
+        _roles.Add(UserRole.Create(roleId));
     }
 }

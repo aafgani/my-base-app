@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace App.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260619161143_InitialCreate")]
+    [Migration("20260620144142_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -54,7 +54,21 @@ namespace App.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RefreshToken");
+                    b.ToTable("RefreshToken", (string)null);
+                });
+
+            modelBuilder.Entity("App.Domain.Entities.Roles.Role", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Role", (string)null);
                 });
 
             modelBuilder.Entity("App.Domain.Entities.Users.User", b =>
@@ -101,7 +115,7 @@ namespace App.Persistence.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("App.Domain.Entities.Authentication.RefreshToken", b =>
@@ -111,6 +125,30 @@ namespace App.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("App.Domain.Entities.Users.User", b =>
+                {
+                    b.OwnsMany("App.Domain.Entities.Users.UserRole", "Roles", b1 =>
+                        {
+                            b1.Property<Guid>("UserId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<Guid>("RoleId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<DateTime>("AssignedAt")
+                                .HasColumnType("timestamp with time zone");
+
+                            b1.HasKey("UserId", "RoleId");
+
+                            b1.ToTable("UserRole");
+
+                            b1.WithOwner()
+                                .HasForeignKey("UserId");
+                        });
+
+                    b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618
         }

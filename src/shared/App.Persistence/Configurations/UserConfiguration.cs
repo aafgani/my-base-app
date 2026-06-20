@@ -1,3 +1,4 @@
+using App.Domain.Entities.Roles.ValueObjects;
 using App.Domain.Entities.Users;
 using App.Domain.Entities.Users.ValueObjects;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,8 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
+        builder.ToTable("User");
+
         builder.Ignore(x => x.DomainEvents);
 
         builder.HasKey(x => x.Id);
@@ -58,5 +61,20 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.Property(x => x.UpdatedAt)
             .IsRequired();
+
+        builder.OwnsMany(
+            x => x.Roles,
+            roleBuilder =>
+            {
+                roleBuilder.Property(x => x.RoleId)
+                    .HasConversion(
+                        v => v.Value,
+                        v => new RoleId(v)
+                    )
+                    .IsRequired();
+
+                roleBuilder.HasKey("UserId", "RoleId");
+            });
+
     }
 }

@@ -5,10 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace App.Persistence.Configurations;
 
-public class RefreshTokenConfiguration : IEntityTypeConfiguration<RefreshToken>
+internal class RefreshTokenConfiguration : IEntityTypeConfiguration<RefreshToken>
 {
     public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<RefreshToken> builder)
     {
+        builder.ToTable("RefreshToken");
+
         builder.Ignore(x => x.DomainEvents);
 
         builder.HasKey(x => x.Id);
