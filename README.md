@@ -2,7 +2,7 @@
 
 Personal Finance and Productivity platform built using modern .NET and Azure cloud-native architecture
 
-## 📦 Overview
+## 📦 Overview.
 
 This project intentionally starts simple and incrementally evolves toward a more cloud-native and event-driven architecture.
 The goal is to balance:
