@@ -1,12 +1,13 @@
 using System;
+using App.Domain.Seedwork;
 
 namespace App.Domain.ValueObjects;
 
-public sealed class Username
+public class Username : ValueObject
 {
     public string Value { get; }
 
-    private Username(string value)
+    public Username(string value)
     {
         Value = value;
     }
@@ -24,6 +25,8 @@ public sealed class Username
         return new Username(value);
     }
 
-    public override string ToString() => Value;
-
+    public override IEnumerable<object> GetAtomicValues()
+    {
+        yield return Value;
+    }
 }

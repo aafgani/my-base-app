@@ -1,6 +1,5 @@
 using App.Core.Interface;
-using App.Domain.Entities;
-using App.Domain.Repositories;
+using App.Domain.Entities.Users;
 using App.Domain.ValueObjects;
 
 namespace App.Core.UseCase.RegisterUser;
@@ -30,13 +29,11 @@ public class RegisterUserService
         var user = User.Create(
             username,
             email,
-            request.FirstName,
-            request.LastName,
             _passwordHasher.Hash(request.Password)
             );
 
         await _userRepository.AddAsync(user);
 
-        return user.Id;
+        return user.Id.Value;
     }
 }

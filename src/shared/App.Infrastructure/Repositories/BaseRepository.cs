@@ -1,79 +1,36 @@
-using App.Domain.Entities;
-using App.Domain.Interface;
-using App.Domain.Repositories;
-using App.Infrastructure.Persistence.Contexts;
-using Microsoft.EntityFrameworkCore;
+using App.Domain.Seedwork;
 
 namespace App.Infrastructure.Repositories;
 
-public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : Entity
+public class BaseRepository<TEntity, TId> : IRepository<TEntity, TId> where TEntity : Entity<TId>
 {
-    protected readonly AppDbContext _context;
-
-    public BaseRepository(AppDbContext context)
+    public Task AddAsync(TEntity entity)
     {
-        _context = context;
+        throw new NotImplementedException();
     }
 
-    public async Task AddAsync(TEntity entity)
+    public Task<TEntity?> FirstAsync(ISpecification<TEntity, TId> specification, bool tracking = false)
     {
-        await _context.Set<TEntity>().AddAsync(entity);
+        throw new NotImplementedException();
     }
 
-    public async Task<TEntity?> FirstAsync(ISpecification<TEntity> specification, bool tracking = false)
+    public Task<TEntity?> GetByIdAsync(TId id)
     {
-        IQueryable<TEntity> query = _context.Set<TEntity>();
-
-        query = query.Where(specification.Criteria);
-
-        foreach (var include in specification.Includes)
-        {
-            query = query.Include(include);
-        }
-
-        return await query.FirstOrDefaultAsync();
+        throw new NotImplementedException();
     }
 
-    public async Task<TEntity?> GetByIdAsync(Guid id)
+    public Task<IEnumerable<TEntity>> ListAsync(ISpecification<TEntity, TId> specification, bool tracking = false)
     {
-        return await _context.Set<TEntity>()
-            .AsNoTracking()
-            .FirstOrDefaultAsync(e => e.Id == id);
-    }
-
-    public async Task<IEnumerable<TEntity>> ListAsync(ISpecification<TEntity> specification, bool tracking = false)
-    {
-        IQueryable<TEntity> query = _context.Set<TEntity>();
-
-        query = query.Where(specification.Criteria);
-
-        foreach (var include in specification.Includes)
-        {
-            query = query.Include(include);
-        }
-
-        if (!tracking)
-        {
-            query = query.AsNoTracking();
-        }
-
-        return await query.ToListAsync();
-
-        // return await query
-        //     .AsNoTracking()
-        //     // .Select(x => x.MapToDomain())
-        //     .ToListAsync();
+        throw new NotImplementedException();
     }
 
     public Task RemoveAsync(TEntity entity)
     {
-        _context.Set<TEntity>().Remove(entity);
-        return Task.CompletedTask;
+        throw new NotImplementedException();
     }
 
     public Task UpdateAsync(TEntity entity)
     {
-        _context.Set<TEntity>().Update(entity);
-        return Task.CompletedTask;
+        throw new NotImplementedException();
     }
 }

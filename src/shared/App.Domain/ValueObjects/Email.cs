@@ -1,13 +1,14 @@
 using System;
 using App.Domain.Exceptions;
+using App.Domain.Seedwork;
 
 namespace App.Domain.ValueObjects;
 
-public record Email
+public class Email : ValueObject
 {
     public string Value { get; }
 
-    private Email(string value)
+    public Email(string value)
     {
         Value = value;
     }
@@ -18,5 +19,10 @@ public record Email
             throw new InvalidEmailExceptions(value);
 
         return new Email(value);
+    }
+
+    public override IEnumerable<object> GetAtomicValues()
+    {
+        yield return Value;
     }
 }

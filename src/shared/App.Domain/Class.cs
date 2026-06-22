@@ -1,0 +1,8 @@
+using System;
+
+namespace App.Domain;
+
+public class Class
+{
+
+}

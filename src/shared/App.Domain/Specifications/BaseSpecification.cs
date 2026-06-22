@@ -1,10 +1,9 @@
 using System.Linq.Expressions;
-using App.Domain.Entities;
-using App.Domain.Interface;
+using App.Domain.Seedwork;
 
 namespace App.Domain.Specifications;
 
-public abstract class BaseSpecification<T> : ISpecification<T> where T : Entity
+public abstract class BaseSpecification<T, TId> : ISpecification<T, TId> where T : Entity<TId>
 {
     protected BaseSpecification(Expression<Func<T, bool>> criteria)
     {
